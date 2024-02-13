@@ -42,8 +42,8 @@ class Antigone:
                 all_chapt.append(element)
             for cha in all_chapt:
                 self.questions.append(q_a[cha][0])
-            print(self.questions[0])
-            print(self.questions[1])
+            #print(self.questions[0])
+            #print(self.questions[1])
 
         except Exception as e:
             print(e)

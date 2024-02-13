@@ -27,10 +27,10 @@ class Intro:
     def game_mode(self) -> None:
         if self.game_mode_c == "T":
             print("using terminal")
-            self.game_controller = Terminalgame()
+            self.game_controller = Terminalgame(antigone=Antigone())
         elif self.game_mode_c == "G":
             print("using gui app")
-            self.game_controller = App()
+            self.game_controller = App(antigone=Antigone())
         else:
             print("sorry something that we have no idea about just occured!")
 

@@ -2,19 +2,25 @@
 
 # Importing libraries
 import random
+from .antigone import Antigone
 from .colors import ColorsPallet
 
 class Terminalgame:
     def __init__(self, **kwargs) -> None:
-        """This is the class responsible for creating an instance of the terminale version of the this game\nThis class takes kwargs that are used to access the questions that will be used for this game.\nIt can access the following aruments:\n"""
+        """This is the class responsible for creating an instance of the terminale version of the this game\nThis class takes kwargs that are used to access the questions that will be used for this game.\nIt can access the following aruments:\nantigone: is the argument that'll take the antigone class\nother will be added soon"""
         self.version = "1.0.0"
         self.colors = ColorsPallet()
         self.g_mode = 0
         self.health = 3
         self.player_err = list()
+        self.game_questions = []
+        self.load_questions(kwargs["antigone"])
 
-    def load_questions(self):
-        pass
+
+    def load_questions(self, antigone_r: Antigone) -> None:
+        self.game_questions.append(antigone_r.questions)
+        print(f"This just loaded all questions")
+        return None
 
     def mode_random(self) -> None:
         pass

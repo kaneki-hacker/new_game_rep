@@ -23,7 +23,7 @@ class Antigone:
                 for k in element:
                     if element[k] != {} and element[k]["q"] != "":
                         self.questions.append(element[k])
-            print(self.questions)
+            #print(self.questions)
         except Exception as e:
             print(e)
 

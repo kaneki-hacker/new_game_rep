@@ -16,16 +16,23 @@ class Terminalgame:
         self.player_err = list()
         self.game_questions = []
         self.load_questions(kwargs["antigone"])
-        self.random_qeustions = []
+        self.random_questions = []
 
     def load_questions(self, antigone_r: Antigone) -> None:
-        self.game_questions.append(antigone_r.questions)
+        self.game_questions = antigone_r.questions
         print(f"This just loaded all questions")
         return None
 
     def mode_random(self) -> None:
-        questions_r = []
+        ques = self.game_questions.copy()
         print(f"{self.colors.red('b')}Hello for the random mode{self.colors.color_reset()}")
+        print("Tu va avoir the question suivant:")
+        choosed_q1 = random.choice(ques)
+        ques.remove(choosed_q1)
+        print(f"{choosed_q1['q']}")
+        if "ra" in choosed_q1:
+            print(choosed_q1["a1"], choosed_q1["a2"])
+
 
     def mode_choice(self, part_choice:str) -> None:
         pass

@@ -13,22 +13,23 @@ class Antigone:
 
     def load_all_questions(self) -> None:
         try:
-            #with open(self.antigone_q_path) as file:
-            #    data = json.load(file)
-            all_chapt = []
-            for element in q_a:
-                all_chapt.append(element)
-            for cha in all_chapt:
-                self.questions.append(q_a[cha][0])
-            #print(self.questions[0])
-            #print(self.questions[1])
-
+            with open(self.antigone_q_path) as f:
+                data = json.load(f)
+            qu=[]
+            for el in data:
+                #print(data[el]["chapter"])
+                qu.append(data[el]["questions"])
+            for element in qu:
+                for k in element:
+                    if element[k] != {} and element[k]["q"] != "":
+                        self.questions.append(element[k])
+            print(self.questions)
         except Exception as e:
             print(e)
 
 if __name__ == "__main__":
     ant = Antigone()
-    ant.load_all_questions()
+    #ant.load_all_questions()
     
     #ch = input("enter the good choice")
     #print(q_a[ch][0]["questions"])

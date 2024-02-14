@@ -45,10 +45,10 @@ class Terminalgame:
             try:
                 u_an = int(input(f"{self.colors.green('f')}Enter le nombre de la bonne reponse: {self.colors.color_reset()}"))
                 if self.check_sol_for_qcm(choosed_q, u_an):
-                    print(f"{self.colors.green('f')}Bravo!!!{self.colors.color_reset()}")
+                    print(f"\n{self.colors.green('f')}Bravo!!!{self.colors.color_reset()}")
                     self.mode_random()
                 else:
-                    print("wrong solution")
+                    print(f"\n{self.colors.red('f')}Votre solution est fausse!!{self.colors.color_reset()}")
             except Exception as e:
                 print(e)
         else:
@@ -67,14 +67,15 @@ class Terminalgame:
                 print('yup')
                 return True
             else:
+                print(self.maybe_uppercase_wrong_answer(q, r))
                 print("nope")
                 return False
         else:
+            print("It's not ur fault!")
             return False
 
     def check_sol_for_qcm(self, q:dict, r:int) -> bool:
         if "ra" in q:
-            #print(q["ra"])
             if str(r) in q["ra"]:
                 return True
             else:
@@ -83,6 +84,13 @@ class Terminalgame:
             print("yup another problem")
             return False
         
+    def maybe_uppercase_wrong_answer(self, ar1: dict, r:str) -> bool:
+        if r.capitalize() == ar1["a"]:
+            print("yup cap problem")
+            return True
+        else:
+            print("not cap probn it's user fault")
+            return False
 
     def mode_choice(self, part_choice:str) -> None:
         pass

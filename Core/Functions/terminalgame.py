@@ -13,6 +13,7 @@ class Terminalgame:
         self.clean = kwargs["cleaner"]
         self.g_mode = 0
         self.health = 3
+        self.tries = 0
         self.player_err = list()
         self.game_questions = []
         self.load_questions(kwargs["antigone"])
@@ -24,15 +25,64 @@ class Terminalgame:
         return None
 
     def mode_random(self) -> None:
-        ques = self.game_questions.copy()
-        print(f"{self.colors.red('b')}Hello for the random mode{self.colors.color_reset()}")
+        self.tries += 1
+        if self.tries == 1:
+            self.random_questions = self.game_questions.copy()
+        print(f"\n{self.colors.red('b')}Hello for the random mode{self.colors.color_reset()}")
         print("Tu va avoir the question suivant:")
-        choosed_q1 = random.choice(ques)
-        ques.remove(choosed_q1)
-        print(f"{choosed_q1['q']}")
-        if "ra" in choosed_q1:
-            print(choosed_q1["a1"], choosed_q1["a2"])
+        choosed_q:dict = random.choice(self.random_questions)
+        self.random_questions.remove(choosed_q)
+        print(f"{self.colors.magenta('f')}{choosed_q['q']}{self.colors.color_reset()}")
+        if "ra" in choosed_q:
+            index = 0
+            for i in choosed_q:
+                if i == "q" or i == "ra":
+                    index += 1
+                else:
+                    print(f"{self.colors.blue('f')}{index}){self.colors.color_reset()}{self.colors.yellow('f')} {choosed_q[i]}{self.colors.color_reset()}")
+                    index += 1
+            del index
+            try:
+                u_an = int(input(f"{self.colors.green('f')}Enter le nombre de la bonne reponse: {self.colors.color_reset()}"))
+                if self.check_sol_for_qcm(choosed_q, u_an):
+                    print(f"{self.colors.green('f')}Bravo!!!{self.colors.color_reset()}")
+                    self.mode_random()
+                else:
+                    print("wrong solution")
+            except Exception as e:
+                print(e)
+        else:
+            try:
+                res = str(input(f"{self.colors.green('f')}Enter votre reponse: {self.colors.color_reset()}"))
+                if self.check_sol_for_inputed_data(choosed_q, res) == True:
+                    print(f"{self.colors.blue('f')}Bravo!!!{self.colors.color_reset()}")
+                else:
+                    print(f"{self.colors.red('f')}Dommage votre repose est fausse!{self.colors.color_reset()}")
+            except Exception as e:
+                print(e)
 
+    def check_sol_for_inputed_data(self, q: dict, r: str) -> bool:
+        if "a" in q:
+            if q["a"] == r:
+                print('yup')
+                return True
+            else:
+                print("nope")
+                return False
+        else:
+            return False
+
+    def check_sol_for_qcm(self, q:dict, r:int) -> bool:
+        if "ra" in q:
+            #print(q["ra"])
+            if str(r) in q["ra"]:
+                return True
+            else:
+                return False
+        else:
+            print("yup another problem")
+            return False
+        
 
     def mode_choice(self, part_choice:str) -> None:
         pass
@@ -74,3 +124,5 @@ class Terminalgame:
             self.game_controller()
         except Exception as e:
             print(e)
+
+

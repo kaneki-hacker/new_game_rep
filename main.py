@@ -17,7 +17,7 @@ def clean() -> None:
 # The main file function
 def main() -> None:
     clean()
-    intro = Intro()
+    intro = Intro(cleaner=clean)
     intro.start()
 
 # The main code entry

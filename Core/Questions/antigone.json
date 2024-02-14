@@ -1,27 +1,10 @@
 {
-  "prologue": [
-    {
-      "chapter": 0,
-      "questions": [
-        {
-          "q1": "Comment s'appele la soeur d'Antigone?",
-          "q2": "Comment s'appele le fiancé d'Antigone?",
-          "q3": "Qui est le roi de Thèbes?",
-          "q4": "Comment s'appele la reine?",
-          "q5": "Pourquoi et Comment est-il devenu roi de Thèbes?",
-          "q6": "Qui est l'aut"
-        }
-      ]
+  "prologue": {
+    "chapter": 1,
+    "questions": {
+      "q1":{
+        "qq": "a"
+      }
     }
-  ],
-  "scene1": [
-    {
-      "chapter": 1,
-      "questions" : [
-        {
-          ""
-        }
-      ]
-    }
-  ]  
+  }
 }

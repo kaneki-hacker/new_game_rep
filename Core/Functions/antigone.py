@@ -4,28 +4,6 @@
 import json
 import os
 
-q_a:dict = {"prologue": [
-    {"chapter": 0,
-     "questions": [
-        {"q1": [
-            {"Quel est le narrateur d'antigone?":"Jean Anouille"}
-        ]},
-        {"q2": [
-            {"Quel est la soeur d'antigone?": "Isman"}
-        ]},
-     ]}
-    ],
-    "scene1":[
-    {"chapter": 1,
-    "questions":  [
-        {"q1":[
-            {"qs": "1"}
-     ]},
-     ],
-     },
-    ]
-}
-
 # Main class in the file
 class Antigone:
     def __init__(self) -> None:

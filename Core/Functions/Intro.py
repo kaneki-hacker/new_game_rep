@@ -8,12 +8,13 @@ from .gui import App
 from .colors import ColorsPallet
 
 class Intro:
-    def __init__(self) -> None:
+    def __init__(self, cleaner) -> None:
         """This is the class used to handle the different game opening and modes and other stuff hehe"""
         self.game_mode_c = "T"
         self.colors = ColorsPallet()
         self.game_controller = None
         self.antigone_questions = Antigone()
+        self.clean = cleaner
 
     def handle_game_type(self, choice: int) -> None:
         if choice == 1:
@@ -27,7 +28,7 @@ class Intro:
     def game_mode(self) -> None:
         if self.game_mode_c == "T":
             print("using terminal")
-            self.game_controller = Terminalgame(antigone=Antigone())
+            self.game_controller = Terminalgame(antigone=Antigone(), cleaner=self.clean)
         elif self.game_mode_c == "G":
             print("using gui app")
             self.game_controller = App(antigone=Antigone())
